@@ -166,6 +166,11 @@ let api = function Binance( options = {} ) {
             const proxyauth = Binance.options.proxy.auth ? `${ Binance.options.proxy.auth.username }:${ Binance.options.proxy.auth.password }@` : '';
             opt.proxy = `http://${ proxyauth }${ Binance.options.proxy.host }:${ Binance.options.proxy.port }`;
         }
+        
+        if ( Binance.options.strictSSL !== undefined ) {
+            opt.rejectUnauthorized = Binance.options.strictSSL;
+        }
+
         return opt;
     }
 
